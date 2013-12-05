@@ -5,18 +5,37 @@ import com.google.gwt.dom.client.Element;
 public class ScreenFull {
 
 
+	/**
+	 * Toggle fullscreen
+	 */
 	public static native void toggleFullScreen() /*-{
 	  	if ($wnd.screenfull.enabled) {
 	  		$wnd.screenfull.toggle();
 	  	}
 	}-*/;
 
+	/**
+	 * Request fullscreen for the page
+	 */
 	public static native void requestFullScreen() /*-{
 	  	if ($wnd.screenfull.enabled) {
 	  		$wnd.screenfull.request();
 	  	}
 	}-*/;
 
+	/**
+	 * Request fullscreen for an element
+	 * @param elem
+	 */
+	public static native void requestFullScreen(Element elem) /*-{
+	  	if ($wnd.screenfull.enabled) {
+	  		$wnd.screenfull.request(elem);
+	  	}
+	}-*/;
+
+	/**
+	 * Exit fullscreen mode
+	 */
 	public static native void exitFullScreen() /*-{
 	  	if ($wnd.screenfull.enabled) {
 	  		$wnd.screenfull.exit();
@@ -62,14 +81,4 @@ public class ScreenFull {
 	  		return $wnd.screenfull.raw;
 	  	}
 	}-*/;
-
-
-/*
-	.raw
-
-	Exposes the raw properties (prefixed if needed) used internally: requestFullscreen, exitFullscreen, fullscreenElement, fullscreenEnabled, fullscreenchange, fullscreenerror
-
-	$(document).on(screenfull.raw.fullscreenchange, function () {
-	    console.log('Fullscreen change');
-	});*/
 }

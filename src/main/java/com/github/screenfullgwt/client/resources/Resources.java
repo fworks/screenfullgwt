@@ -8,6 +8,10 @@ public interface Resources extends ClientBundle {
 
 	public static Resources RESOURCES = GWT.create(Resources.class);
 
-	@Source("js/screenfull.min.js")
+	@Source("js/screenfull.js")
 	TextResource screenfullScript();
+
+	@Source("js/screenfull.min.js")
+	TextResource screenfullMinScript();
+
 }
