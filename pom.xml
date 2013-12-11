@@ -32,8 +32,8 @@
 	<scm>
 		<!-- Required: source control information: -->
 		<url>https://github.com/fworks/screenfullgwt</url>
-		<connection>scm:git:git://github.com/fworks/screenfullgwt.git</connection>
-		<developerConnection>scm:git:git@github.com:fworks/screenfullgwt.git</developerConnection>
+		<connection>scm:svn:https://github.com/fworks/screenfullgwt</connection>
+		<developerConnection>scm:svn:https://github.com/fworks/screenfullgwt</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
