@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.fworks</groupId>
 	<artifactId>screenfullgwt</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>ScreenFull GWT</name>
@@ -31,9 +31,9 @@
 
 	<scm>
 		<!-- Required: source control information: -->
-		<url>https://github.com/fworks/screenfullgwt</url>
-		<connection>scm:svn:https://github.com/fworks/screenfullgwt</connection>
-		<developerConnection>scm:svn:https://github.com/fworks/screenfullgwt</developerConnection>
+		<url>https://github.com/fworks/screenfullgwt/tags/screenfullgwt-1.0</url>
+		<connection>scm:svn:https://github.com/fworks/screenfullgwt/tags/screenfullgwt-1.0</connection>
+		<developerConnection>scm:svn:https://github.com/fworks/screenfullgwt/tags/screenfullgwt-1.0</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
