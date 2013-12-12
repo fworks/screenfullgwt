@@ -27,6 +27,13 @@ How to use
 2) Just call the static class methods
 
         ScreenFull.toggleFullScreen();
+        ScreenFull.requestFullScreen();
+		ScreenFull.isFullScreen();
+		ScreenFull.element();
+		ScreenFull.enabled();
+		ScreenFull.exitFullScreen();
+		// and more
+				
         
 Example (adding the toggle fullscreen on a button click handler:
 
