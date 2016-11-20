@@ -1,6 +1,6 @@
 /*!
 * screenfull
-* v1.2.0 - 2014-04-29
+* v3.0.0 - 2015-11-24
 * (c) Sindre Sorhus; MIT License
 */
 (function () {
@@ -103,8 +103,6 @@
 				this.request(elem);
 			}
 		},
-		onchange: function () {},
-		onerror: function () {},
 		raw: fn
 	};
 
@@ -121,7 +119,7 @@
 	Object.defineProperties(screenfull, {
 		isFullscreen: {
 			get: function () {
-				return !!document[fn.fullscreenElement];
+				return Boolean(document[fn.fullscreenElement]);
 			}
 		},
 		element: {
@@ -134,17 +132,9 @@
 			enumerable: true,
 			get: function () {
 				// Coerce to boolean in case of old WebKit
-				return !!document[fn.fullscreenEnabled];
+				return Boolean(document[fn.fullscreenEnabled]);
 			}
 		}
-	});
-
-	document.addEventListener(fn.fullscreenchange, function (e) {
-		screenfull.onchange.call(screenfull, e);
-	});
-
-	document.addEventListener(fn.fullscreenerror, function (e) {
-		screenfull.onerror.call(screenfull, e);
 	});
 
 	if (isCommonjs) {
