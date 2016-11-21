@@ -25,7 +25,7 @@ public class ScreenFull {
 
 	/**
 	 * Request fullscreen for an element
-	 * @param elem
+	 * @param elem element
 	 */
 	public static native void requestFullScreen(Element elem) /*-{
 	  	if ($wnd.screenfull.enabled) {
@@ -44,7 +44,7 @@ public class ScreenFull {
 
 	/**
 	 * Returns a boolean whether fullscreen is active.
-	 * @return
+	 * @return is active
 	 */
 	public static native boolean isFullScreen() /*-{
 	  	if ($wnd.screenfull.enabled) {
@@ -54,7 +54,7 @@ public class ScreenFull {
 
 	/**
 	 * Returns the element currently in fullscreen, otherwise null.
-	 * @return
+	 * @return element
 	 */
 	public static native Element element() /*-{
 	  	if ($wnd.screenfull.enabled) {
@@ -63,8 +63,9 @@ public class ScreenFull {
 	}-*/;
 
 	/**
-	 * Returns a boolean whether you are allowed to enter fullscreen. If your page is inside an <iframe> you will need to add a allowfullscreen attribute (+ webkitallowfullscreen and mozallowfullscreen).
-	 * @return
+	 * Returns a boolean whether you are allowed to enter fullscreen. 
+	 * If your page is inside an iframe you will need to add a allowfullscreen attribute (+ webkitallowfullscreen and mozallowfullscreen).
+	 * @return is enabled
 	 */
 	public static native boolean enabled() /*-{
 	  	if ($wnd.screenfull.enabled) {
@@ -74,7 +75,7 @@ public class ScreenFull {
 
 	/**
 	 * Exposes the raw properties (prefixed if needed) used internally: requestFullscreen, exitFullscreen, fullscreenElement, fullscreenEnabled, fullscreenchange, fullscreenerror
-	 * @return
+	 * @return element
 	 */
 	public static native Element raw() /*-{
 	  	if ($wnd.screenfull.enabled) {
