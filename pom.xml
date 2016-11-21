@@ -1,19 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.fworks</groupId>
 	<artifactId>screenfullgwt</artifactId>
-	<version>3.0</version>
+	<version>3.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>ScreenFull GWT</name>
 	<description>Simple gwtwrapper for the screenfull.js (cross-browser usage of the JavaScript Fullscreen API http://sindresorhus.com/screenfull.js) </description>
-	<url>https://github.com/flahviocastro/screenfullgwt</url>
+	<url>https://github.com/fworks/screenfullgwt</url>
 
 	<!-- Sonatype OSS -->
 	<parent>
-	    <groupId>org.sonatype.oss</groupId>
-	    <artifactId>oss-parent</artifactId>
-	    <version>7</version>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
 	</parent>
 
 	<licenses>
@@ -31,23 +32,22 @@
 
 	<scm>
 		<!-- Required: source control information: -->
-		<url>https://github.com/fworks/screenfullgwt/tags/screenfullgwt-1.0</url>
-		<connection>scm:svn:https://github.com/fworks/screenfullgwt/tags/screenfullgwt-1.0</connection>
-		<developerConnection>scm:svn:https://github.com/fworks/screenfullgwt/tags/screenfullgwt-1.0</developerConnection>
-		<tag>HEAD</tag>
+		<connection>scm:git:git://github.com/fworks/screenfullgwt.git</connection>
+		<developerConnection>scm:git:git@github.com:fworks/screenfullgwt.git</developerConnection>
+		<url>http://github.com/fworks/screenfullgwt</url>
 	</scm>
 
 	<!-- Required: developer information: -->
 	<developers>
 		<developer>
-			<id>flahviocastro</id>
+			<id>fworks</id>
 			<name>Flavio Castro</name>
 			<email>flaviolcastro@gmail.com</email>
 			<roles>
-	            <role>project owner</role>
-	            <role>administrator</role>
-	            <role>developer</role>
-	        </roles>
+				<role>project owner</role>
+				<role>administrator</role>
+				<role>developer</role>
+			</roles>
 		</developer>
 	</developers>
 
@@ -55,12 +55,12 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
-			<version>2.5.1</version>
+			<version>2.8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>2.5.1</version>
+			<version>2.8.0</version>
 		</dependency>
 	</dependencies>
 
@@ -84,7 +84,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -100,7 +100,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
+				<version>2.10.4</version>
 				<executions>
 					<execution>
 						<id>attach-javadoc</id>
@@ -111,16 +111,31 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
 				<configuration>
-					<remoteTagging>false</remoteTagging>
-					<suppressCommitBeforeTag>false</suppressCommitBeforeTag>
-					<tagbase>https://github.com/fworks/screenfullgwt/releases/tag/screenfullgwt-1.0</tagbase>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<mavenExecutorId>forked-path</mavenExecutorId>
+				    <useReleaseProfile>true</useReleaseProfile>
+				    <arguments>-Psonatype-oss-release</arguments>
 				</configuration>
+				
 			</plugin>
+			
+			<plugin>
+		      <groupId>org.sonatype.plugins</groupId>
+		      <artifactId>nexus-staging-maven-plugin</artifactId>
+		      <version>1.6.7</version>
+		      <extensions>true</extensions>
+		      <configuration>
+		        <serverId>ossrh</serverId>
+		        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+		        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+		      </configuration>
+		    </plugin>
 
 			<!-- Release configuration: -->
 <!-- 			<plugin>
@@ -148,10 +163,10 @@
 			</plugin>  -->
 		</plugins>
 	</build>
-	
-	<!-- <profiles>
 
-		GPG Signature on release
+	<profiles>
+
+		<!-- GPG Signature on release -->
 		<profile>
 			<id>release-sign-artifacts</id>
 			<activation>
@@ -180,6 +195,6 @@
 			</build>
 		</profile>
 
-	</profiles> -->
+	</profiles>
 
 </project>
