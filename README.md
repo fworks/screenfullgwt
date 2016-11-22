@@ -10,7 +10,7 @@ maven
     <dependency>
       <groupId>com.github.fworks</groupId>
       <artifactId>screenfullgwt</artifactId>
-      <version>1.0</version>
+      <version>3.0</version>
     </dependency>
 
 
