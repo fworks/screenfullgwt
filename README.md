@@ -1,7 +1,9 @@
 # screenfullgwt
 [![Build Status](https://travis-ci.org/fworks/screenfullgwt.svg?branch=master)](https://travis-ci.org/fworks/screenfullgwt)
 
-Simple gwt wrapper for the screenfull.js (cross-browser usage of the JavaScript Fullscreen API  http://sindresorhus.com/screenfull.js)
+Simple gwt wrapper for the screenfull.js
+
+"Simple wrapper for cross-browser usage of the JavaScript Fullscreen API, which lets you bring the page or any element into fullscreen. Smoothens out the browser implementation differences, so you don't have too." (http://sindresorhus.com/screenfull.js)
 
 # maven
 
@@ -42,8 +44,9 @@ fullscreenButton.addClickHandler(new ClickHandler() {
 });
 ```            
 
-# Note
+# Notes
 
 Note that it is just a wrapper for the screenfull.js file defined here.
+
 Please go to http://sindresorhus.com/screenfull.js to see more details about the js.            
 
