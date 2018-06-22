@@ -4,14 +4,31 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
+/**
+ * Resource client bundle for the js files.
+ * 
+ * @author flaviolcastro
+ *
+ */
 public interface Resources extends ClientBundle {
 
-	public static Resources RESOURCES = GWT.create(Resources.class);
+  /** static resource object. */
+  public static final Resources RESOURCES = GWT.create(Resources.class);
 
-	@Source("js/screenfull.js")
-	TextResource screenfullScript();
+  /**
+   * Full js file.
+   * 
+   * @return TextResource with the js content.
+   */
+  @Source("js/screenfull.js")
+  TextResource screenfullScript();
 
-	@Source("js/screenfull.min.js")
-	TextResource screenfullMinScript();
+  /**
+   * Min js file.
+   * 
+   * @return TextResource with the js content.
+   */
+  @Source("js/screenfull.min.js")
+  TextResource screenfullMinScript();
 
 }

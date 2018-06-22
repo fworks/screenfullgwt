@@ -1,8 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.fworks</groupId>
 	<artifactId>screenfullgwt</artifactId>
-	<version>3.1-SNAPSHOT</version>
+	<version>3.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>ScreenFull GWT</name>
@@ -13,7 +16,7 @@
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>7</version>
+		<version>9</version>
 	</parent>
 
 	<licenses>
@@ -27,6 +30,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 
 	<scm>
@@ -34,8 +40,8 @@
 		<connection>scm:git:https://github.com/fworks/screenfullgwt.git</connection>
 		<developerConnection>scm:git:https://github.com/fworks/screenfullgwt.git</developerConnection>
 		<url>http://github.com/fworks/screenfullgwt</url>
-    <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<!-- Required: developer information: -->
 	<developers>
@@ -51,16 +57,40 @@
 		</developer>
 	</developers>
 
+	<dependencyManagement>
+		<dependencies>
+			<!-- ensure all GWT deps use the same version (unless overridden) -->
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt</artifactId>
+				<version>2.8.2</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
-			<version>2.8.0</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>2.8.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -100,7 +130,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.4</version>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-javadoc</id>
@@ -119,26 +149,55 @@
 				<configuration>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<mavenExecutorId>forked-path</mavenExecutorId>
-				    <useReleaseProfile>true</useReleaseProfile>
-				    <arguments>-Psonatype-oss-release</arguments>
+					<useReleaseProfile>true</useReleaseProfile>
+					<arguments>-Psonatype-oss-release</arguments>
 				</configuration>
-				
 			</plugin>
-			
+
+			<!-- GWT Maven Plugin -->
 			<plugin>
-		      <groupId>org.sonatype.plugins</groupId>
-		      <artifactId>nexus-staging-maven-plugin</artifactId>
-		      <version>1.6.7</version>
-		      <extensions>true</extensions>
-		      <configuration>
-		        <serverId>ossrh</serverId>
-		        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-		        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-		      </configuration>
-		    </plugin>
+				<groupId>net.ltgt.gwt.maven</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>1.0-rc-9</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<moduleName>com.github.fworks.screenfullgwt.ScreenFullGWT</moduleName>
+				</configuration>
+				<!-- <configuration>
+					<failIfNoTests>true</failIfNoTests>
+					<skipTests>false</skipTests>
+					<testSourceDirectory>src/test/java</testSourceDirectory>
+				</configuration> -->
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 
 			<!-- Release configuration: -->
-<!-- 			<plugin>
+ 	   <!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.4.1</version>
@@ -180,7 +239,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.4</version>
+						<version>1.6</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
