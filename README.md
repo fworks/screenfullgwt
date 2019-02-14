@@ -11,7 +11,7 @@ Simple gwt wrapper for the screenfull.js
 <dependency>
   <groupId>com.github.fworks</groupId>
   <artifactId>screenfullgwt</artifactId>
-  <version>3.0</version>
+  <version>4.0.1</version>
 </dependency>
 ```
 
