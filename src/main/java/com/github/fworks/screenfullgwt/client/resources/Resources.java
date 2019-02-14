@@ -16,14 +16,6 @@ public interface Resources extends ClientBundle {
   public static final Resources RESOURCES = GWT.create(Resources.class);
 
   /**
-   * Full js file.
-   * 
-   * @return TextResource with the js content.
-   */
-  @Source("js/screenfull.js")
-  TextResource screenfullScript();
-
-  /**
    * Min js file.
    * 
    * @return TextResource with the js content.
