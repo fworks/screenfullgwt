@@ -1,5 +1,6 @@
 # screenfullgwt
 [![Build Status](https://travis-ci.org/fworks/screenfullgwt.svg?branch=master)](https://travis-ci.org/fworks/screenfullgwt)
+![Maven Central](https://img.shields.io/maven-central/v/com.github.fworks/screenfullgwt.svg)
 
 Simple gwt wrapper for the screenfull.js
 
