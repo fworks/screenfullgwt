@@ -1,8 +1,9 @@
 # screenfullgwt
 
-![Travis (.org) branch](https://img.shields.io/travis/fworks/screenfullgwt/master.svg)
-![Maven Central](https://img.shields.io/maven-central/v/com.github.fworks/screenfullgwt.svg)
-![GitHub](https://img.shields.io/github/license/fworks/screenfullgwt.svg)
+[![](https://img.shields.io/travis/fworks/screenfullgwt/master.svg)](https://travis-ci.org/fworks/screenfullgwt)
+[![](https://img.shields.io/maven-central/v/com.github.fworks/screenfullgwt.svg)](https://mvnrepository.com/artifact/com.github.fworks/screenfullgwt)
+[![](https://img.shields.io/github/license/fworks/screenfullgwt.svg)](#)
+
 
 Simple gwt wrapper for the screenfull.js
 
